@@ -112,35 +112,3 @@ backend/
 ├── requirements.txt    # Python dependencies
 └── manage.py          # Django management script
 ```
-
-## 🚀 Deployment
-
-The application is production-ready and can be deployed to:
-- **Heroku**: Using the included Procfile
-- **DigitalOcean**: App Platform or Droplets
-- **AWS**: EC2, Elastic Beanstalk, or Lambda
-- **Docker**: Containerized deployment
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests for new features
-5. Ensure all tests pass
-6. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 👥 Authors
-
-- **Sami & Yassine** - Initial development
-
-## 🆘 Support
-
-For support and questions:
-- Create an issue on GitHub
-- Check the [testing guide](README_TESTING.md) for common problems
-- Review the API documentation
