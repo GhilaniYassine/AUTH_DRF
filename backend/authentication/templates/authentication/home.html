@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome to Beya Tech{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>👋 Welcome to Beya Tech!</h2>
+    
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <div style="text-align: left; margin: 2rem 0;">
+            <p style="font-size: 1.1rem; color: #333;">
+                Hello <strong>{{ user.first_name|default:user.username }}</strong>! 
+                You are currently logged in.
+            </p>
+        </div>
+        
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="{% url 'template_dashboard' %}" class="btn" style="flex: 1; text-decoration: none; display: inline-block;">
+                Go to Dashboard
+            </a>
+            <a href="{% url 'template_logout' %}" class="btn" style="flex: 1; text-decoration: none; display: inline-block; background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);">
+                Logout
+            </a>
+        </div>
+    {% else %}
+        <div style="text-align: left; margin: 2rem 0;">
+            <p style="font-size: 1.1rem; color: #666; line-height: 1.6;">
+                Your gateway to innovative technology solutions. 
+                Join our platform to access cutting-edge tools and services 
+                designed to transform your digital experience.
+            </p>
+        </div>
+        
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="{% url 'template_login' %}" class="btn" style="flex: 1; text-decoration: none; display: inline-block;">
+                🔐 Login
+            </a>
+            <a href="{% url 'template_register' %}" class="btn" style="flex: 1; text-decoration: none; display: inline-block; background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">
+                🚀 Create Account
+            </a>
+        </div>
+        
+        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #eee;">
+            <h3 style="color: #333; margin-bottom: 1rem; font-size: 1.2rem;">Features</h3>
+            <div style="text-align: left;">
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin: 0.5rem 0; color: #666;">✨ Secure Authentication</li>
+                    <li style="margin: 0.5rem 0; color: #666;">🔒 Password Reset</li>
+                    <li style="margin: 0.5rem 0; color: #666;">👤 User Profile Management</li>
+                    <li style="margin: 0.5rem 0; color: #666;">📱 Responsive Design</li>
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

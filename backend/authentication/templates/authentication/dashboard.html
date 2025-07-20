@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - Beya Tech{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>🎯 Your Dashboard</h2>
+    
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div style="background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%); padding: 1.5rem; border-radius: 15px; margin-bottom: 2rem;">
+        <h3 style="margin-bottom: 0.5rem;">Welcome back, {{ user.first_name|default:user.username }}! 👋</h3>
+        <p style="color: #666; margin: 0;">Great to see you again. Here's your account overview:</p>
+    </div>
+    
+    <div style="text-align: left; margin-top: 2rem;">
+        <div style="display: grid; gap: 1rem;">
+            <div style="display: flex; justify-content: space-between; padding: 0.8rem; background: #f8f9fa; border-radius: 8px;">
+                <span><strong>👤 Username:</strong></span>
+                <span>{{ user.username }}</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 0.8rem; background: #f8f9fa; border-radius: 8px;">
+                <span><strong>📧 Email:</strong></span>
+                <span>{{ user.email }}</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 0.8rem; background: #f8f9fa; border-radius: 8px;">
+                <span><strong>🏷️ First Name:</strong></span>
+                <span>{{ user.first_name|default:"Not set" }}</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 0.8rem; background: #f8f9fa; border-radius: 8px;">
+                <span><strong>🏷️ Last Name:</strong></span>
+                <span>{{ user.last_name|default:"Not set" }}</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 0.8rem; background: #f8f9fa; border-radius: 8px;">
+                <span><strong>📅 Member Since:</strong></span>
+                <span>{{ user.date_joined|date:"F d, Y" }}</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 0.8rem; background: #f8f9fa; border-radius: 8px;">
+                <span><strong>🕒 Last Login:</strong></span>
+                <span>{{ user.last_login|date:"F d, Y g:i A"|default:"Never" }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="{% url 'template_home' %}" class="btn" style="flex: 1; text-decoration: none; display: inline-block; background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">
+            🏠 Home
+        </a>
+        <a href="{% url 'template_logout' %}" class="btn" style="flex: 1; text-decoration: none; display: inline-block; background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);">
+            🚪 Logout
+        </a>
+    </div>
+</div>
+{% endblock %}
